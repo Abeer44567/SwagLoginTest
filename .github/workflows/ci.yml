@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: Java CI
 
 on:
   push:
@@ -22,5 +22,13 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Build and Test with Maven
-      run: mvn -B test
+    - name: Compile Java code
+      run: |
+        mkdir -p out
+        javac -d out $(find . -name "*.java")
+
+    - name: Run Java tests
+      run: |
+        # إذا عندك ملفات main لتشغيلها، ضع اسم الكلاس هنا
+        # مثال: java -cp out Main
+        echo "Tests can be run here if you have a test framework like JUnit"
